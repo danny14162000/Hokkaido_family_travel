@@ -1,0 +1,2108 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>北海道夏天旅遊手冊</title>
+  <style>
+    :root {
+      --ink: #17231f;
+      --ink-2: #31423d;
+      --muted: #63706d;
+      --paper: #f5f7f3;
+      --sheet: #ffffff;
+      --mist: #e8efe9;
+      --line: #d6dfd8;
+      --line-strong: #b7c5bd;
+      --pine: #2d6b4f;
+      --pine-dark: #174835;
+      --lake: #2b7691;
+      --lake-soft: #dceef3;
+      --coral: #c55e52;
+      --coral-soft: #f6ded9;
+      --gold: #a8792c;
+      --gold-soft: #f5ead2;
+      --lilac: #6d668b;
+      --shadow-soft: 0 16px 40px rgba(23, 35, 31, .08);
+      --shadow-lift: 0 22px 50px rgba(23, 35, 31, .13);
+      --radius: 8px;
+      --page-pad: clamp(18px, 3.5vw, 42px);
+      --content: 1220px;
+      --mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: "Microsoft JhengHei", "Yu Gothic", "Meiryo", "Noto Sans TC", sans-serif;
+      --serif: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif TC", "PMingLiU", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(45, 107, 79, .055) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(43, 118, 145, .04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+      font-family: var(--sans);
+      line-height: 1.68;
+      text-wrap: pretty;
+    }
+
+    body.compact {
+      --page-pad: clamp(14px, 2.5vw, 28px);
+    }
+
+    a { color: inherit; }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      width: min(var(--content), calc(100% - var(--page-pad) * 2));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(214, 223, 216, .9);
+      background: rgba(245, 247, 243, .91);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      width: min(var(--content), calc(100% - var(--page-pad) * 2));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 64px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      color: #fff;
+      background: conic-gradient(from 210deg, var(--pine), var(--lake), var(--coral), var(--gold), var(--pine));
+      border-radius: var(--radius);
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(45, 107, 79, .2);
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .quick-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .quick-nav::-webkit-scrollbar { display: none; }
+
+    .nav-pill,
+    .utility-btn,
+    .day-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink-2);
+      background: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .nav-pill:hover,
+    .utility-btn:hover,
+    .day-tab:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .utility-btn {
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: clamp(28px, 5vw, 58px) 0 24px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 12% 20%, rgba(197, 94, 82, .12), transparent 26%),
+        radial-gradient(circle at 86% 12%, rgba(43, 118, 145, .13), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.88), rgba(245,247,243,.72));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: clamp(22px, 4vw, 52px);
+      align-items: end;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 12px;
+      color: var(--pine);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .05em;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--coral);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-family: var(--serif);
+      font-size: clamp(40px, 8vw, 86px);
+      line-height: .98;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    .hero-lede {
+      max-width: 740px;
+      margin: 18px 0 0;
+      color: var(--ink-2);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    .trip-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      min-height: 98px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.82);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: clamp(18px, 3vw, 26px);
+      line-height: 1.05;
+    }
+
+    .notice-strip {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .notice {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .notice strong {
+      color: var(--pine-dark);
+      font-weight: 950;
+    }
+
+    main {
+      padding: 26px 0 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 34px 0 16px;
+    }
+
+    .section-heading h2,
+    .day-title h2 {
+      margin: 0;
+      color: var(--pine-dark);
+      font-family: var(--serif);
+      font-size: clamp(27px, 4vw, 42px);
+      line-height: 1.08;
+    }
+
+    .section-heading p {
+      margin: 6px 0 0;
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .day-tabs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 8px;
+      margin: 18px 0 18px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .day-tab {
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 72px;
+      cursor: pointer;
+      color: var(--muted);
+      background: rgba(255,255,255,.78);
+    }
+
+    .day-tab .tab-date {
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 950;
+      line-height: 1.15;
+    }
+
+    .day-tab .tab-route {
+      margin-top: 3px;
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+
+    .day-tab[aria-selected="true"] {
+      color: #fff;
+      border-color: var(--pine-dark);
+      background: linear-gradient(135deg, var(--pine-dark), var(--lake));
+      box-shadow: var(--shadow-lift);
+    }
+
+    .day-tab[aria-selected="true"] .tab-date {
+      color: #fff;
+    }
+
+    .day-panel {
+      display: none;
+      animation: rise .26s ease;
+    }
+
+    .day-panel.is-active {
+      display: block;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .day-shell {
+      display: grid;
+      grid-template-columns: minmax(240px, 310px) minmax(0, 1fr);
+      gap: clamp(18px, 3vw, 34px);
+      align-items: start;
+    }
+
+    .day-rail {
+      position: sticky;
+      top: 84px;
+      display: grid;
+      gap: 12px;
+      padding-top: 2px;
+    }
+
+    .date-card {
+      padding: 22px;
+      color: #fff;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(23,72,53,.96), rgba(43,118,145,.94)),
+        var(--pine);
+      box-shadow: var(--shadow-lift);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .date-card::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -36px;
+      width: 130px;
+      height: 130px;
+      border: 1px solid rgba(255,255,255,.32);
+      transform: rotate(18deg);
+    }
+
+    .date-card .date {
+      position: relative;
+      z-index: 1;
+      font-family: var(--mono);
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .date-card .weekday {
+      position: relative;
+      z-index: 1;
+      margin-top: 7px;
+      opacity: .86;
+      font-weight: 900;
+    }
+
+    .route-card,
+    .rail-note {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.84);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .route-card .label,
+    .rail-note .label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--pine);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .04em;
+    }
+
+    .route-card strong,
+    .rail-note strong {
+      display: block;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .rail-note p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .day-main {
+      display: grid;
+      gap: 22px;
+      min-width: 0;
+    }
+
+    .day-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .day-title p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .tag {
+      display: inline-flex;
+      min-height: 29px;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--pine-dark);
+      background: var(--mist);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .tag.gold { color: #6b4b18; background: var(--gold-soft); }
+    .tag.coral { color: #883a32; background: var(--coral-soft); }
+    .tag.lake { color: #1f5d72; background: var(--lake-soft); }
+    .tag.lilac { color: #4e486e; background: #e7e4f0; }
+
+    .schedule {
+      display: grid;
+      gap: 10px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 126px minmax(0, 1fr);
+      gap: 16px;
+      min-height: 88px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 10px 28px rgba(23, 35, 31, .055);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .event:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .time {
+      font-family: var(--mono);
+      color: var(--lake);
+      font-weight: 950;
+      line-height: 1.25;
+    }
+
+    .time .kind {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .event h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .event p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .event-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .event-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 11px;
+      border: 1px solid #c6d9e0;
+      border-radius: 999px;
+      color: #1f5d72;
+      background: var(--lake-soft);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 950;
+      box-shadow: inset 0 -1px 0 rgba(43,118,145,.12);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .event-chip:hover,
+    .event-chip:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--lake);
+      background: #cfe8ef;
+      outline: 0;
+    }
+
+    .guide-block {
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .block-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 8px 0 0;
+    }
+
+    .block-heading h3 {
+      margin: 0;
+      color: var(--pine-dark);
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+    }
+
+    .block-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .spot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .spot-card {
+      display: grid;
+      grid-template-columns: minmax(160px, .52fr) minmax(0, 1fr);
+      min-height: 260px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .spot-card.wide {
+      grid-column: 1 / -1;
+      min-height: 310px;
+    }
+
+    .spot-card.no-photo {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 0;
+    }
+
+    .spot-photo {
+      min-height: 100%;
+      background: var(--mist);
+      overflow: hidden;
+    }
+
+    .spot-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .spot-copy {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: clamp(16px, 2.4vw, 24px);
+    }
+
+    .spot-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .category {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: var(--pine-dark);
+      background: var(--mist);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .category.food { color: #6d4516; background: var(--gold-soft); }
+    .category.shop { color: #1f5d72; background: var(--lake-soft); }
+    .category.ticket { color: #883a32; background: var(--coral-soft); }
+    .category.rest { color: #4e486e; background: #e7e4f0; }
+
+    .spot-copy h4 {
+      margin: 0;
+      font-size: clamp(19px, 2.1vw, 24px);
+      line-height: 1.28;
+    }
+
+    .spot-copy .intro {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 15.5px;
+    }
+
+    .guide-list {
+      display: grid;
+      gap: 8px;
+      margin: 2px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .guide-list li {
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr);
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .guide-list b {
+      color: var(--pine-dark);
+      font-weight: 950;
+    }
+
+    .spot-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .map-link,
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      border: 1px solid #bcd4dc;
+      color: #1f5d72;
+      background: var(--lake-soft);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 950;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .map-link::after,
+    .action-link::after {
+      content: "↗";
+      margin-left: 7px;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .map-link:hover,
+    .action-link:hover,
+    .map-link:focus-visible,
+    .action-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--lake);
+      background: #cfe8ef;
+      outline: 0;
+    }
+
+    .highlight {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 1px solid rgba(197,94,82,.28);
+      border-radius: 999px;
+      color: #84382f;
+      background: var(--coral-soft);
+      font-weight: 950;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .flight-board {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flight-row {
+      display: grid;
+      grid-template-columns: 152px 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .flight-group {
+      display: grid;
+      place-content: center;
+      min-height: 84px;
+      padding: 12px;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--pine-dark);
+      text-align: center;
+      font-weight: 950;
+    }
+
+    .flight-leg {
+      padding: 12px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .flight-leg .date {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .flight-leg strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .flight-leg span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .ticket-panel {
+      display: grid;
+      grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr);
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .ticket-summary {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      padding: 18px;
+      border-radius: var(--radius);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(43,118,145,.98), rgba(197,94,82,.9));
+    }
+
+    .ticket-summary small {
+      opacity: .82;
+      font-weight: 850;
+    }
+
+    .ticket-summary strong {
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.05;
+      font-family: var(--serif);
+    }
+
+    .ticket-details {
+      display: grid;
+      gap: 10px;
+      padding: 4px 0;
+    }
+
+    .detail-line {
+      display: grid;
+      grid-template-columns: 138px minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-line:last-child { border-bottom: 0; }
+
+    .detail-line b {
+      color: var(--pine-dark);
+      font-weight: 950;
+    }
+
+    .detail-line span {
+      color: var(--muted);
+    }
+
+    .footer-note {
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .skip-target {
+      scroll-margin-top: 92px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(197,94,82,.38);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .day-shell,
+      .ticket-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .day-rail {
+        position: static;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .spot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .spot-card,
+      .spot-card.wide {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 10px 0;
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-copy span {
+        white-space: normal;
+      }
+
+      .quick-nav {
+        max-width: 56vw;
+      }
+
+      .notice-strip,
+      .trip-stats,
+      .info-grid,
+      .day-rail,
+      .flight-row {
+        grid-template-columns: 1fr;
+      }
+
+      .day-tabs {
+        grid-template-columns: repeat(6, minmax(132px, 1fr));
+      }
+
+      .day-title {
+        display: block;
+      }
+
+      .tag-row {
+        justify-content: flex-start;
+        margin-top: 12px;
+      }
+
+      .event {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .spot-card,
+      .spot-card.wide {
+        grid-template-columns: 1fr;
+      }
+
+      .spot-photo img {
+        min-height: 210px;
+        aspect-ratio: 16 / 10;
+      }
+
+      .guide-list li,
+      .detail-line {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .topbar-inner {
+        gap: 10px;
+      }
+
+      .quick-nav {
+        max-width: 48vw;
+      }
+
+      .brand-copy strong {
+        font-size: 14px;
+      }
+
+      .nav-pill,
+      .utility-btn {
+        min-height: 34px;
+        padding: 7px 10px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 13vw, 58px);
+      }
+
+      .date-card .date {
+        font-size: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @media print {
+      .topbar,
+      .quick-nav,
+      .utility-btn {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      .day-panel {
+        display: block !important;
+        break-inside: avoid;
+        margin-bottom: 24px;
+      }
+
+      .day-shell,
+      .hero-grid,
+      .spot-card,
+      .ticket-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .day-rail {
+        position: static;
+      }
+
+      .day-tabs {
+        display: none;
+      }
+
+      .spot-photo img {
+        max-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-mark" aria-hidden="true">北</div>
+      <div class="brand-copy">
+        <strong>北海道夏天旅遊手冊</strong>
+        <span>2026/07/10-07/15｜每日行程、交通、票券、景點指引</span>
+      </div>
+      <nav class="quick-nav" aria-label="快速導覽">
+        <a class="nav-pill" href="#trip-tabs">每日行程</a>
+        <a class="nav-pill" href="#shared">通用資訊</a>
+        <a class="nav-pill" href="#flights">航班</a>
+        <a class="nav-pill" href="#tickets">票券</a>
+        <button class="utility-btn" id="densityToggle" type="button" aria-pressed="false">緊湊版</button>
+        <button class="utility-btn" type="button" id="printBtn">列印</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="page hero-grid">
+      <div>
+        <p class="kicker">HOKKAIDO FIELD GUIDE</p>
+        <h1>把每天走法整理成現場可用的旅行手冊</h1>
+        <p class="hero-lede">主行程以 Notion 內容為基準，已整合包車、航班分組、白色戀人票券、每日景點玩法、逛街重點與必買必吃。所有已取得的 Notion 圖片改用本機檔案，避免過期連結造成圖片失效。</p>
+      </div>
+      <div>
+        <div class="trip-stats" aria-label="旅程摘要">
+          <div class="stat"><span>旅程日期</span><strong>07/10-07/15</strong></div>
+          <div class="stat"><span>主要移動</span><strong>CTS→小樽→札幌→洞爺湖</strong></div>
+          <div class="stat"><span>包車人數</span><strong>10 人</strong></div>
+          <div class="stat"><span>行李上限</span><strong>最多 16 件大型行李</strong></div>
+        </div>
+        <div class="notice-strip">
+          <div class="notice"><strong>7/12</strong> 白色戀人付費區成人票 10 張；餅乾手作 8 人。</div>
+          <div class="notice"><strong>7/13</strong> 10:00 札幌站買伴手禮，12:45 集合預備上車。</div>
+          <div class="notice"><strong>7/15</strong> 洞爺湖乃之風 10:30 包車前往新千歲機場。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="page">
+    <section id="trip-tabs" class="skip-target" aria-labelledby="daily-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="daily-title">每日行程</h2>
+          <p>一天的交通、時間表、景點、逛街與美食都放在同一頁籤。行程表中的景點名稱可以點，會跳到下方對應的旅客指引。</p>
+        </div>
+      </div>
+
+      <div class="day-tabs" role="tablist" aria-label="每日行程頁籤">
+        <button class="day-tab" type="button" role="tab" aria-selected="true" aria-controls="day-0710" id="tab-0710" data-day="0710">
+          <span class="tab-date">7/10</span><span class="tab-route">抵達、小樽、札幌</span>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" aria-controls="day-0711" id="tab-0711" data-day="0711">
+          <span class="tab-date">7/11</span><span class="tab-route">札幌市區、狸小路</span>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" aria-controls="day-0712" id="tab-0712" data-day="0712">
+          <span class="tab-date">7/12</span><span class="tab-route">教会、白色戀人、藻岩山</span>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" aria-controls="day-0713" id="tab-0713" data-day="0713">
+          <span class="tab-date">7/13</span><span class="tab-route">札幌站、包車、洞爺湖</span>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" aria-controls="day-0714" id="tab-0714" data-day="0714">
+          <span class="tab-date">7/14</span><span class="tab-route">SAIRO、Lake Hill Farm</span>
+        </button>
+        <button class="day-tab" type="button" role="tab" aria-selected="false" aria-controls="day-0715" id="tab-0715" data-day="0715">
+          <span class="tab-date">7/15</span><span class="tab-route">退房、機場、返台</span>
+        </button>
+      </div>
+
+      <article class="day-panel is-active" id="day-0710" role="tabpanel" aria-labelledby="tab-0710" data-day="0710">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/10</div>
+              <div class="weekday">週五｜抵達北海道</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>新千歲機場 → 小樽 → 札幌 CHALEUR / Airbnb</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">今天重點</span>
+              <strong>先吃小樽市場，再沿運河與堺町通慢慢逛。</strong>
+              <p>行李與體力是關鍵，購物以好帶、好分裝為優先。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>抵達、小樽散步、札幌入住</h2>
+                <p>第一天安排小樽作為抵達後的緩衝城市，景點集中、步行友善，適合邊吃邊逛。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag lake">JR</span>
+                <span class="tag gold">甜點</span>
+                <span class="tag coral">伴手禮</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月10日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">航班</span>07:35</div>
+                <div><h3>主行程抵達新千歲機場</h3><p>VZ570 台北桃園 02:50 起飛，07:35 抵達札幌千歲。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>09:00</div>
+                <div><h3>新千歲機場 → 小樽 JR</h3><p>抓取出關、取行李與買票時間。抵達小樽後先往市場午餐方向移動。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>10:30</div>
+                <div>
+                  <h3>三角市場</h3>
+                  <p>先用海鮮丼補充體力，再開始小樽散步。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-sankaku">三角市場</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>11:40</div>
+                <div>
+                  <h3>小樽運河</h3>
+                  <p>沿運河散步拍照，天氣好時適合安排短暫咖啡休息。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-otaru-canal">小樽運河</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>12:30</div>
+                <div>
+                  <h3>小樽音樂盒堂、堺町通</h3>
+                  <p>主街區步行逛店，適合找小物、玻璃器皿與甜點。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-musicbox">小樽音樂盒堂</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>13:30</div>
+                <div>
+                  <h3>北一硝子</h3>
+                  <p>玻璃工藝與小樽代表性購物點，已使用 Notion 圖片。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-kitaichi">北一硝子</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>14:30</div>
+                <div>
+                  <h3>北菓楼 小樽本館、六花亭</h3>
+                  <p>甜點伴手禮集中採買，北菓楼與六花亭排在同一區塊。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-kitakaro-rikka">北菓楼、六花亭</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">移動</span>16:30</div>
+                <div><h3>小樽 → 札幌</h3><p>搭 JR 回札幌，依現場體力調整晚餐或直接入住。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">入住</span>18:00</div>
+                <div><h3>札幌 CHALEUR / Airbnb</h3><p>整理行李，準備隔天札幌市區行程。</p></div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card no-photo skip-target" id="spot-sankaku">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">市場早餐 / 午餐</span></div>
+                    <h4>三角市場</h4>
+                    <p class="intro">小樽車站旁的海鮮市場，很適合作為抵達小樽後第一站。店家密集，點餐節奏快，適合分組找位。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先繞一圈看海鮮丼價格與排隊狀況，再選座位多、翻桌快的店。</span></li>
+                      <li><b>必吃</b><span>海鮮丼、干貝、海膽、鮭魚卵。若多人同行，可點不同組合互相分食。</span></li>
+                      <li><b>提醒</b><span>市場通道窄，行李不適合拖進店內；大件行李建議先寄放或集中看管。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Otaru%20Sankaku%20Market" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-otaru-canal">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">散步拍照</span></div>
+                    <h4>小樽運河</h4>
+                    <p class="intro">小樽最經典的水岸街景，石造倉庫、瓦斯燈與水面倒影是主要看點。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>從運河淺草橋街園一帶開始拍照，再沿著倉庫群慢慢走。</span></li>
+                      <li><b>活動</b><span>天氣穩定時可考慮運河遊船；不搭船也適合安排 30-45 分鐘散步。</span></li>
+                      <li><b>拍照</b><span>橋上與倉庫對岸視角最穩，團體照可先拍再分散逛街。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Otaru%20Canal" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-musicbox">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category shop">堺町通購物</span></div>
+                    <h4>小樽音樂盒堂</h4>
+                    <p class="intro">小樽代表性的音樂盒專門店，室內陳列密度高，適合慢慢挑紀念小物。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先看經典木盒與玻璃音樂盒，再找北海道限定或可愛造型款。</span></li>
+                      <li><b>必買</b><span>小型音樂盒、玻璃擺飾、可送人的輕量紀念品。</span></li>
+                      <li><b>提醒</b><span>易碎品要注意包裝與行李空間；多人同行建議約定出口集合時間。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Otaru%20Music%20Box%20Museum" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card skip-target" id="spot-kitaichi">
+                  <div class="spot-photo"><img src="assets/notion-kitaichi-glass.png" alt="北一硝子"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category shop">玻璃工藝</span><span class="category">Notion 圖片</span></div>
+                    <h4>北一硝子</h4>
+                    <p class="intro">小樽玻璃工藝代表店，適合看杯器、燈飾與精緻生活雜貨。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先看大型展示與燈飾，再回頭挑實用杯盤、小花瓶或筷架。</span></li>
+                      <li><b>必買</b><span>玻璃杯、醬油碟、筷架、季節色小物；送禮款要確認防震包裝。</span></li>
+                      <li><b>停留</b><span>建議 45-60 分鐘。喜歡玻璃器皿的人可以多留時間。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kitaichi%20Glass%20Otaru" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card wide skip-target" id="spot-kitakaro-rikka">
+                  <div class="spot-photo"><img src="assets/notion-kitakaro-rikka.png" alt="北菓楼 小樽本館、六花亭"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">甜點伴手禮</span><span class="category">Notion 圖片</span></div>
+                    <h4>北菓楼 小樽本館、六花亭</h4>
+                    <p class="intro">兩家都是北海道經典甜點品牌，小樽本館一帶很適合一次完成甜點伴手禮採買。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先買限定或易售完品項，再補常溫伴手禮。多人可以分工排隊與結帳。</span></li>
+                      <li><b>必買</b><span>北菓楼妖精之森年輪蛋糕、開拓米果；六花亭奶油葡萄夾心、草莓巧克力。</span></li>
+                      <li><b>提醒</b><span>冷藏品要評估後續移動時間；大量採買可先拍照記錄袋數，避免回程漏拿。</span></li>
+                    </ul>
+                    <div class="spot-actions">
+                      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kitakaro%20Otaru%20Main%20Shop" target="_blank" rel="noreferrer">北菓楼 Google Maps</a>
+                      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rokkatei%20Otaru" target="_blank" rel="noreferrer">六花亭 Google Maps</a>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-panel" id="day-0711" role="tabpanel" aria-labelledby="tab-0711" data-day="0711">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/11</div>
+              <div class="weekday">週六｜札幌市區</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>札幌朝市 → 北之漁場 / 北之寶 → 北海道神宮 → 大通公園 → 狸小路</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">大姨丈組</span>
+              <strong>13:00 TPE 起飛，17:55 抵達 CTS。</strong>
+              <p>時間較晚，抵達後直接前往 CHALEUR / Airbnb；返程同主要組。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>札幌市場、神宮、公園與狸小路</h2>
+                <p>這天用札幌市區輕鬆移動，把市場、自然散步、商店街與晚餐放在同一天。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag gold">海鮮</span>
+                <span class="tag lake">市區交通</span>
+                <span class="tag coral">逛街</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月11日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">上午</span>09:00</div>
+                <div>
+                  <h3>札幌朝市 - 成和水産</h3>
+                  <p>早上先吃市場海鮮或看店家採買狀況。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-seiwa">札幌朝市 - 成和水産</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">接續</span>10:00</div>
+                <div>
+                  <h3>北之漁場 / 北之寶</h3>
+                  <p>接在札幌朝市後安排，補海產、乾貨與北海道伴手禮。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-kitanoryoba">北之漁場 / 北之寶</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">建議</span>11:30</div>
+                <div>
+                  <h3>北海道神宮</h3>
+                  <p>到圓山公園一帶散步、參拜，節奏放慢。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-hokkaido-jingu">北海道神宮</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">下午</span>14:30</div>
+                <div>
+                  <h3>大通公園</h3>
+                  <p>札幌市中心綠地，適合休息、買飲料、拍札幌街景。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-odori">大通公園</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">逛街</span>16:00</div>
+                <div>
+                  <h3>狸小路商店街</h3>
+                  <p>藥妝、零食、伴手禮集中補貨。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-tanukikoji">狸小路</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">晚餐</span>18:30</div>
+                <div>
+                  <h3>晚餐建議 Suage+</h3>
+                  <p>湯咖哩是札幌代表美食之一，Suage+ 使用 Notion 圖片。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-suage">Suage+</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card no-photo skip-target" id="spot-seiwa">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">札幌朝市</span></div>
+                    <h4>札幌朝市 - 成和水産</h4>
+                    <p class="intro">札幌市區的早市場安排，適合作為 7/11 的開場，先吃海鮮、看市場活力。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先看當日海鮮與價位，再決定現吃或買乾貨。</span></li>
+                      <li><b>必吃</b><span>海鮮丼、蟹類、干貝、鮭魚卵；人多可點不同口味交換。</span></li>
+                      <li><b>提醒</b><span>早上店家營業節奏較快，建議先訂集合點再分散。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sapporo%20Morning%20Market%20Seiwa%20Suisan" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-kitanoryoba">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">海產伴手禮</span></div>
+                    <h4>北之漁場 / 北之寶</h4>
+                    <p class="intro">接在札幌朝市後，適合補海鮮加工品、乾貨與較好攜帶的北海道味道。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先看試吃與保存方式，再買可常溫保存、好分送的品項。</span></li>
+                      <li><b>必買</b><span>昆布、干貝乾、蟹味噌、海鮮零食、湯包類。</span></li>
+                      <li><b>提醒</b><span>冷凍或冷藏品要確認可否一路帶到住宿與回台。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E3%81%AE%E6%BC%81%E5%A0%B4%20%E6%9C%AD%E5%B9%8C" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-hokkaido-jingu">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">神社散步</span></div>
+                    <h4>北海道神宮</h4>
+                    <p class="intro">札幌代表性神社，周邊是圓山公園綠地，適合從市區切換到安靜自然的節奏。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>從參道慢慢走進去，先拍鳥居，再到境內參拜與休息。</span></li>
+                      <li><b>活動</b><span>可抽御神籤、買御守，作為北海道旅行紀念。</span></li>
+                      <li><b>停留</b><span>建議 60-75 分鐘，若想散步可加圓山公園周邊。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hokkaido%20Jingu" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-odori">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">市中心公園</span></div>
+                    <h4>大通公園</h4>
+                    <p class="intro">札幌市中心的長形公園，連接電視塔與商圈，是市區行程很好的中途休息點。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>用公園當作散步軸線，邊走邊找咖啡、甜點或電視塔拍照點。</span></li>
+                      <li><b>活動</b><span>天氣好時買飲料坐一下，比硬排行程更舒服。</span></li>
+                      <li><b>提醒</b><span>若遇活動或人潮，可直接切往地下街或狸小路。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Odori%20Park%20Sapporo" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-tanukikoji">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category shop">商店街</span></div>
+                    <h4>狸小路商店街</h4>
+                    <p class="intro">札幌最方便的商店街之一，有遮雨棚，藥妝、零食、餐廳與伴手禮都集中。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先列出藥妝與零食清單，分組採買，最後約定同一街口集合。</span></li>
+                      <li><b>必買</b><span>北海道限定零食、藥妝、休足時間、喉糖、保養品、伴手禮補貨。</span></li>
+                      <li><b>提醒</b><span>店很多但品項重複，看到價格好且方便帶就可先買，避免最後趕時間。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Tanukikoji%20Shopping%20Street" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card skip-target" id="spot-suage">
+                  <div class="spot-photo"><img src="assets/suage-plus.png" alt="Suage+ 湯咖哩"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">晚餐建議</span><span class="category">Notion 圖片</span></div>
+                    <h4>Suage+</h4>
+                    <p class="intro">札幌湯咖哩代表選項之一，適合作為狸小路後的晚餐建議。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先選湯底與辣度，再選雞肉、蔬菜或海鮮主餐。</span></li>
+                      <li><b>必吃</b><span>知床雞、炙燒角煮、北海道蔬菜；不吃辣可從低辣度開始。</span></li>
+                      <li><b>提醒</b><span>熱門時段可能排隊，人多可先派代表確認候位方式。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Suage%2B%20Sapporo" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-panel" id="day-0712" role="tabpanel" aria-labelledby="tab-0712" data-day="0712">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/12</div>
+              <div class="weekday">週日｜主日與體驗</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>札幌に在る教会 → 白色戀人公園 → なごやか亭 → 藻岩山</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">票券重點</span>
+              <strong><span class="highlight">餅乾手作課程 15:20</span></strong>
+              <p>付費區成人票 10 張已確認；手作課程共 8 人，到時確認人位。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>札幌に在る教会、白色戀人與夜景</h2>
+                <p>上午主日，中午愛宴，下午排白色戀人公園與餅乾手作，晚上吃迴轉壽司再上藻岩山。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">主日</span>
+                <span class="tag coral">票券</span>
+                <span class="tag gold">壽司</span>
+                <span class="tag lake">夜景</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月12日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">主日</span>10:00</div>
+                <div>
+                  <h3>札幌に在る教会</h3>
+                  <p>主日 10:00 開始，中午有愛宴。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-sapporo-church">札幌に在る教会</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">下午</span>13:40</div>
+                <div>
+                  <h3>白色戀人公園付費區</h3>
+                  <p>付費區已確認 10 張成人票，使用方式見票券重點。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-shiroi">白色戀人公園</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">Highlight</span>15:20</div>
+                <div>
+                  <h3><span class="highlight">餅乾手作課程 15:20</span></h3>
+                  <p>私の白い恋人手作りコース 4 名樣 × 2 張，共 8 人。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-shiroi">手作課程與使用方式</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">晚餐</span>17:30</div>
+                <div>
+                  <h3>迴轉壽司なごやか亭 発寒店</h3>
+                  <p>7/12 主選迴轉壽司。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-nagoyakatei">なごやか亭 発寒店</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">夜景</span>19:30</div>
+                <div>
+                  <h3>藻岩山纜車</h3>
+                  <p>依天氣與體力決定上山時間，保留夜景彈性。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-moiwa">藻岩山纜車</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card skip-target" id="spot-sapporo-church">
+                  <div class="spot-photo"><img src="assets/notion-sapporo-church.png" alt="札幌に在る教会"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">主日</span><span class="category">Notion 圖片</span></div>
+                    <h4>札幌に在る教会</h4>
+                    <p class="intro">主日 10:00 開始，中午有愛宴。這段以聚會為主，行程安排要保留安靜與交通緩衝。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>提早抵達，先確認入口與座位；中午愛宴後再銜接下午行程。</span></li>
+                      <li><b>提醒</b><span>若午後前往白色戀人公園，離開前先確認全員集合與交通方式。</span></li>
+                      <li><b>停留</b><span>10:00 至中午愛宴結束，下午行程抓彈性銜接。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E3%81%AB%E5%9C%A8%E3%82%8B%E6%95%99%E4%BC%9A" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card wide skip-target" id="spot-shiroi">
+                  <div class="spot-photo"><img src="assets/notion-shiroi-koibito-park.png" alt="白色戀人公園"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category ticket">甜點園區</span><span class="category">Notion 圖片</span></div>
+                    <h4>白色戀人公園</h4>
+                    <p class="intro">甜點主題園區與伴手禮重點。付費區已確認 10 張成人票；<span class="highlight">餅乾手作課程 15:20</span> 共 8 人。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先進付費區看園區與展示，再分流：手作 8 人進課程，其餘可逛商店、拍照與買甜點。</span></li>
+                      <li><b>必買</b><span>白色戀人、限定鐵盒、巧克力甜點、園區限定包裝。</span></li>
+                      <li><b>票券</b><span>手作課程：2026/07/12 15:20，私の白い恋人手作りコース 4 名樣 × 2 張，共 8 人。</span></li>
+                      <li><b>使用</b><span>從信件附件 QR code 或 Webket My Page 開票，現場以手機畫面或列印票券出示。</span></li>
+                    </ul>
+                    <div class="spot-actions">
+                      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Shiroi%20Koibito%20Park" target="_blank" rel="noreferrer">Google Maps</a>
+                      <a class="action-link" href="#tickets">票券重點</a>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="spot-card skip-target" id="spot-nagoyakatei">
+                  <div class="spot-photo"><img src="assets/notion-nagoyakatei-hassamu.png" alt="迴轉壽司なごやか亭 発寒店"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">迴轉壽司</span><span class="category">Notion 圖片</span></div>
+                    <h4>迴轉壽司なごやか亭 発寒店</h4>
+                    <p class="intro">7/12 主選迴轉壽司，適合在白色戀人公園後接晚餐。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>人多時先確認候位與座位拆分，能分桌會更快入座。</span></li>
+                      <li><b>必吃</b><span>鮭魚、干貝、鮭魚卵、炙燒系列、當日推薦品。</span></li>
+                      <li><b>提醒</b><span>熱門時間可能排隊，晚餐後還有藻岩山，時間要保守。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%81%AA%E3%81%94%E3%82%84%E3%81%8B%E4%BA%AD%20%E7%99%BA%E5%AF%92%E5%BA%97" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-moiwa">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">札幌夜景</span></div>
+                    <h4>藻岩山纜車</h4>
+                    <p class="intro">札幌夜景代表景點，適合當作 7/12 的結尾，但需要看天氣與當天體力。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>傍晚後上山，先看天氣能見度；若雲霧太重，可改成市區晚間散步。</span></li>
+                      <li><b>活動</b><span>纜車、觀景台、夜景拍照。團體照建議上山後先拍，避免下山趕時間。</span></li>
+                      <li><b>提醒</b><span>夜間山上較涼，帶薄外套；回程交通先確認末班與叫車方式。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mount%20Moiwa%20Ropeway" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-panel" id="day-0713" role="tabpanel" aria-labelledby="tab-0713" data-day="0713">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/13</div>
+              <div class="weekday">週一｜前往洞爺湖</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>札幌 CHALEUR 退房 → 札幌火車站 → 包車 → 洞爺湖乃之風</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">包車</span>
+              <strong>13:00 出發，10 人，綠牌車。</strong>
+              <p>札幌火車站到洞爺湖乃之風約 2 小時；行李最多 16 件大型行李。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>札幌站伴手禮與包車移動</h2>
+                <p>上午把札幌站作為最後補貨點，12:45 集合預備上車，13:00 包車前往洞爺湖乃之風。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag coral">伴手禮</span>
+                <span class="tag lake">包車</span>
+                <span class="tag gold">溫泉飯店</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月13日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">退房</span>09:00</div>
+                <div><h3>札幌 CHALEUR / Airbnb 退房</h3><p>整理大行李與手提袋，確認包車行李件數。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">購物</span>10:00</div>
+                <div>
+                  <h3>到札幌火車站買伴手禮</h3>
+                  <p>車站與百貨地下街適合最後補零食與限定商品。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-sapporo-station">札幌火車站伴手禮</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">集合</span>12:45</div>
+                <div><h3>集合預備上車</h3><p>確認 10 人到齊、行李上車順序、容易暈車者先坐前排。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">包車</span>13:00</div>
+                <div><h3>札幌火車站 → 洞爺湖乃之風</h3><p>綠牌車，10 人，約 2 小時；行李最多 16 件大型行李。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">入住</span>15:00</div>
+                <div>
+                  <h3>洞爺湖乃之風 Resort 入住</h3>
+                  <p>抵達後先辦入住、休息、看湖景與安排溫泉時間。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-nonokaze">洞爺湖乃之風</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card no-photo skip-target" id="spot-sapporo-station">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category shop">車站補貨</span></div>
+                    <h4>札幌火車站伴手禮</h4>
+                    <p class="intro">7/13 上午 10:00 到札幌火車站買伴手禮，適合把小樽沒買齊的品項補完。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先找大型伴手禮區與百貨地下食品街，再分組採買。</span></li>
+                      <li><b>必買</b><span>白色戀人、じゃがポックル、六花亭奶油葡萄夾心、北菓楼年輪蛋糕、Royce。</span></li>
+                      <li><b>提醒</b><span>12:45 必須回到集合點；買完就把袋數與行李集中，避免上車前混亂。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sapporo%20Station" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-nonokaze">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category rest">住宿溫泉</span></div>
+                    <h4>洞爺湖乃之風 Resort</h4>
+                    <p class="intro">洞爺湖畔溫泉飯店，7/13-7/15 住宿主據點，適合把節奏放慢。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>入住後先熟悉餐廳、浴場與湖邊動線，再安排晚餐與溫泉。</span></li>
+                      <li><b>活動</b><span>湖景散步、溫泉、飯店內休息。天氣好時可以安排湖畔拍照。</span></li>
+                      <li><b>提醒</b><span>第二天還有洞爺湖周邊行程，當晚先整理小包與外套。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=The%20Lake%20View%20Toya%20Nonokaze%20Resort" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-panel" id="day-0714" role="tabpanel" aria-labelledby="tab-0714" data-day="0714">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/14</div>
+              <div class="weekday">週二｜洞爺湖周邊</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>SAIRO 展望台 → Lake Hill Farm → 洞爺湖 / 乃之風周邊</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">今天重點</span>
+              <strong>湖景、牧場冰淇淋、溫泉休息。</strong>
+              <p>把行程做鬆，保留天氣與體力調整空間。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>洞爺湖景與牧場甜點</h2>
+                <p>7/14 以洞爺湖周邊為主，SAIRO 展望台看湖景，Lake Hill Farm 作為美食與冰淇淋停靠點。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag lake">湖景</span>
+                <span class="tag gold">冰淇淋</span>
+                <span class="tag lilac">溫泉</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月14日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">上午</span>10:00</div>
+                <div>
+                  <h3>SAIRO 展望台</h3>
+                  <p>天氣好時先看洞爺湖全景與拍團體照。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-sairo">SAIRO 展望台</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">午前</span>11:30</div>
+                <div>
+                  <h3>Lake Hill Farm</h3>
+                  <p>洞爺湖周邊美食與冰淇淋停靠點。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-lake-hill">Lake Hill Farm</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">下午</span>14:00</div>
+                <div>
+                  <h3>洞爺湖 / 乃之風周邊休息</h3>
+                  <p>回到湖畔散步、休息、溫泉，讓旅程中段有恢復時間。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-toyako-rest">洞爺湖周邊</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card no-photo skip-target" id="spot-sairo">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category">湖景展望</span></div>
+                    <h4>SAIRO 展望台</h4>
+                    <p class="intro">洞爺湖周邊經典展望點，適合用比較高的角度看湖、島與山景。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先拍湖景全景，再拍團體照；若風大，縮短停留時間。</span></li>
+                      <li><b>活動</b><span>觀景、買簡單伴手禮、看天氣決定下一站節奏。</span></li>
+                      <li><b>提醒</b><span>展望台價值很吃天氣，若能見度差就把時間留給 Lake Hill Farm 與飯店。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Silo%20Observatory%20Lake%20Toya" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-lake-hill">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">牧場甜點</span></div>
+                    <h4>Lake Hill Farm</h4>
+                    <p class="intro">洞爺湖周邊的牧場甜點停靠點，適合吃冰淇淋、看草地與羊蹄山方向景色。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先買冰淇淋或優格飲，再到戶外草地散步拍照。</span></li>
+                      <li><b>必吃</b><span>義式冰淇淋、牧場牛奶甜點、優格飲；口味可分著買互相試。</span></li>
+                      <li><b>提醒</b><span>適合當作午前或下午茶，不建議排太趕，留 45-60 分鐘會比較舒服。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Lake%20Hill%20Farm%20Toyako" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card no-photo skip-target" id="spot-toyako-rest">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category rest">湖畔休息</span></div>
+                    <h4>洞爺湖 / 乃之風周邊</h4>
+                    <p class="intro">旅行中段最適合放慢的一段，把湖畔散步、溫泉與飯店休息排在同一個下午。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>回飯店放東西後，輕裝去湖邊走一段，再回來泡湯。</span></li>
+                      <li><b>活動</b><span>湖畔拍照、泡溫泉、飯店內休息、整理回程行李。</span></li>
+                      <li><b>提醒</b><span>隔天要退房去機場，晚上可以先把大行李整理好。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Lake%20Toya%20Onsen" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-panel" id="day-0715" role="tabpanel" aria-labelledby="tab-0715" data-day="0715">
+        <div class="day-shell">
+          <aside class="day-rail">
+            <div class="date-card">
+              <div class="date">7/15</div>
+              <div class="weekday">週三｜返程</div>
+            </div>
+            <div class="route-card">
+              <span class="label">ROUTE</span>
+              <strong>洞爺湖乃之風 → 新千歲機場 → 台北桃園</strong>
+            </div>
+            <div class="rail-note">
+              <span class="label">包車</span>
+              <strong>10:30 出發，10 人，綠牌車。</strong>
+              <p>行李最多 16 件大型行李。抵達機場後依主要組與哲哲組航班分流。</p>
+            </div>
+          </aside>
+
+          <div class="day-main">
+            <div class="day-title">
+              <div>
+                <h2>退房、包車到新千歲機場、返台</h2>
+                <p>最後一天以交通與機場購物為主，時間抓保守，主行程與大姨丈組同一班返程，哲哲組較晚離開。</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag lake">包車</span>
+                <span class="tag coral">機場</span>
+                <span class="tag gold">伴手禮補貨</span>
+              </div>
+            </div>
+
+            <div class="schedule" aria-label="7月15日行程表">
+              <div class="event">
+                <div class="time"><span class="kind">退房</span>09:30</div>
+                <div><h3>洞爺湖乃之風退房</h3><p>確認房間、護照、票券、行李與免稅品。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">包車</span>10:30</div>
+                <div><h3>洞爺湖乃之風 → 新千歲機場</h3><p>綠牌車，10 人，行李最多 16 件大型行李。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">機場</span>13:00</div>
+                <div>
+                  <h3>新千歲機場午餐與最後購物</h3>
+                  <p>依到達時間處理報到、午餐與伴手禮補貨。</p>
+                  <div class="event-links"><a class="event-chip" href="#spot-cts">新千歲機場</a></div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">返程</span>15:05</div>
+                <div><h3>主要組 / 大姨丈組 CI131</h3><p>CTS 15:05 → TPE 18:15，中華航空。</p></div>
+              </div>
+              <div class="event">
+                <div class="time"><span class="kind">返程</span>16:25</div>
+                <div><h3>哲哲組 JX851</h3><p>CTS 16:25 → TPE 19:35，星宇航空。</p></div>
+              </div>
+            </div>
+
+            <div class="guide-block">
+              <div class="block-heading"><h3>景點、逛街與美食</h3></div>
+              <div class="spot-grid">
+                <section class="spot-card no-photo skip-target" id="spot-cts">
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category shop">機場補貨</span></div>
+                    <h4>新千歲機場</h4>
+                    <p class="intro">北海道最後的購物與用餐點，甜點、零食、拉麵與免稅品都集中。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先完成報到與托運，再分組吃午餐、補伴手禮。</span></li>
+                      <li><b>必買</b><span>Royce、生巧克力、白色戀人、じゃがポックル、LeTAO、六花亭、機場限定品。</span></li>
+                      <li><b>提醒</b><span>主行程 15:05 起飛，購物與退稅時間要保守；哲哲組可多留機場用餐時間。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=New%20Chitose%20Airport" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="shared" class="skip-target" aria-labelledby="shared-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="shared-title">通用資訊</h2>
+          <p>跨日期會用到的住宿、包車與現場提醒集中在這裡。</p>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>住宿</h3>
+          <p>7/10-7/13：札幌 CHALEUR / Airbnb。7/13-7/15：洞爺湖乃之風 Resort。</p>
+        </div>
+        <div class="info-card">
+          <h3>包車</h3>
+          <p>7/13 札幌火車站 → 洞爺湖乃之風，13:00 出發，10 人，綠牌車，約 2 小時。</p>
+        </div>
+        <div class="info-card">
+          <h3>回程包車</h3>
+          <p>7/15 洞爺湖乃之風 → 新千歲機場，10:30 出發，10 人，綠牌車，行李最多 16 件大型行李。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="flights" class="skip-target" aria-labelledby="flights-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="flights-title">航班分組</h2>
+          <p>時間皆為當地時間。大姨丈組較晚抵達，抵達後直接前往 CHALEUR / Airbnb；哲哲組較晚離開。</p>
+        </div>
+      </div>
+      <div class="flight-board">
+        <div class="flight-row">
+          <div class="flight-group">主要組</div>
+          <div class="flight-leg"><div class="date">去程 2026/07/10</div><strong>VZ570｜02:50 TPE → 07:35 CTS</strong><span>泰國越南喬航空，直飛，3 小時 45 分鐘。</span></div>
+          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>CI131｜15:05 CTS → 18:15 TPE</strong><span>中華航空，直飛，4 小時 10 分鐘。</span></div>
+        </div>
+        <div class="flight-row">
+          <div class="flight-group">大姨丈組</div>
+          <div class="flight-leg"><div class="date">去程 2026/07/11</div><strong>13:00 TPE → 17:55 CTS</strong><span>較晚抵達，抵達後直接前往 CHALEUR / Airbnb。</span></div>
+          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>CI131｜15:05 CTS → 18:15 TPE</strong><span>返程跟主要組相同。</span></div>
+        </div>
+        <div class="flight-row">
+          <div class="flight-group">哲哲組</div>
+          <div class="flight-leg"><div class="date">去程 2026/07/10</div><strong>VZ570｜02:50 TPE → 07:35 CTS</strong><span>去程跟主要組相同。</span></div>
+          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>JX851｜16:25 CTS → 19:35 TPE</strong><span>星宇航空，較晚離開。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tickets" class="skip-target" aria-labelledby="tickets-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="tickets-title">白色戀人票券重點</h2>
+          <p>票券與白色戀人公園合併，只保留手作課程與使用方式重點。</p>
+        </div>
+      </div>
+      <div class="ticket-panel">
+        <div class="ticket-summary">
+          <small>Webket Purchase</small>
+          <strong>白色戀人公園</strong>
+          <span class="highlight">餅乾手作課程 15:20</span>
+        </div>
+        <div class="ticket-details">
+          <div class="detail-line"><b>付費區</b><span>成人票 10 張已確認。</span></div>
+          <div class="detail-line"><b>手作課程</b><span>2026/07/12 15:20，私の白い恋人手作りコース 4 名樣 × 2 張，共 8 人。</span></div>
+          <div class="detail-line"><b>購買編號</b><span>手作課程：00453-2026-0610-8100-0610-0009。</span></div>
+          <div class="detail-line"><b>使用方式</b><span>從信件附件 QR code 或 Webket My Page 開票，現場以手機畫面或列印票券出示。</span></div>
+          <div class="detail-line"><b>現場提醒</b><span>手作課程只有 8 人可做，到時確認人位；其他人可逛商店、拍照、買甜點。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">版本：Garden field-guide redesign。內容以 Notion 行程與後續修正為主；未明確標定的時間為建議時段，可依現場交通、天氣與體力調整。</p>
+  </main>
+
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll(".day-tab"));
+      const panels = Array.from(document.querySelectorAll(".day-panel"));
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function activateDay(day) {
+        tabs.forEach((tab) => {
+          const isActive = tab.dataset.day === day;
+          tab.setAttribute("aria-selected", String(isActive));
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("is-active", panel.dataset.day === day);
+        });
+      }
+
+      function offsetTop(target) {
+        const topbar = document.querySelector(".topbar");
+        const offset = topbar ? topbar.offsetHeight + 18 : 18;
+        return target.getBoundingClientRect().top + window.pageYOffset - offset;
+      }
+
+      function jumpTo(target, updateHash) {
+        const panel = target.closest(".day-panel");
+        if (panel && panel.dataset.day) activateDay(panel.dataset.day);
+        window.requestAnimationFrame(() => {
+          window.scrollTo({
+            top: offsetTop(target),
+            behavior: reducedMotion ? "auto" : "smooth"
+          });
+          if (updateHash) history.replaceState(null, "", "#" + target.id);
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          activateDay(tab.dataset.day);
+          history.replaceState(null, "", "#trip-tabs");
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const id = link.getAttribute("href").slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+          event.preventDefault();
+          jumpTo(target, id !== "trip-tabs");
+        });
+      });
+
+      const densityToggle = document.getElementById("densityToggle");
+      const savedCompact = localStorage.getItem("hokkaidoGuideCompact") === "true";
+      if (savedCompact) {
+        document.body.classList.add("compact");
+        densityToggle.setAttribute("aria-pressed", "true");
+        densityToggle.textContent = "舒適版";
+      }
+      densityToggle.addEventListener("click", () => {
+        const next = !document.body.classList.contains("compact");
+        document.body.classList.toggle("compact", next);
+        densityToggle.setAttribute("aria-pressed", String(next));
+        densityToggle.textContent = next ? "舒適版" : "緊湊版";
+        localStorage.setItem("hokkaidoGuideCompact", String(next));
+      });
+
+      document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+      if (location.hash) {
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) {
+          setTimeout(() => jumpTo(target, false), 80);
+        }
+      }
+    }());
+  </script>
+</body>
+</html>
