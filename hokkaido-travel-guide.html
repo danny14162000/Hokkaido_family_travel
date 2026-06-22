@@ -539,6 +539,25 @@
       line-height: 1.35;
     }
 
+    .event-title-link {
+      color: var(--pine-dark);
+      text-decoration: none;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(219, 239, 245, .68), rgba(219, 239, 245, .68)) left 82% / 100% 14% no-repeat;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      transition: color .18s ease, background-size .18s ease, background-position .18s ease;
+    }
+
+    .event-title-link:hover,
+    .event-title-link:focus-visible {
+      color: #1f5d72;
+      background-position: left 52%;
+      background-size: 100% 48%;
+      outline: 0;
+    }
+
     .event p {
       margin: 5px 0 0;
       color: var(--muted);
@@ -802,7 +821,6 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .map-link::after,
     .action-link::after {
       content: "↗";
       margin-left: 7px;
@@ -810,9 +828,35 @@
       font-size: 11px;
     }
 
+    .map-link {
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 14px 8px 12px;
+      border-color: rgba(66, 133, 244, .38);
+      color: #1a73e8;
+      background: linear-gradient(180deg, #ffffff 0%, #e8f0fe 100%);
+      box-shadow: 0 8px 18px rgba(26, 115, 232, .12), inset 0 -1px 0 rgba(66, 133, 244, .16);
+    }
+
+    .map-link::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      background: center / contain no-repeat url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234285f4' d='M12 2c-3.6 0-6.5 2.8-6.5 6.3C5.5 13.1 12 22 12 22s6.5-8.9 6.5-13.7C18.5 4.8 15.6 2 12 2Z'/%3E%3Cpath fill='%2334a853' d='M12 22s-3.3-4.5-5.2-8.4l3.8-3.8L12 22Z'/%3E%3Cpath fill='%23fbbc04' d='M6.8 13.6a12.8 12.8 0 0 1-1.3-5.3c0-1.7.7-3.3 1.8-4.4l3.3 5.9-3.8 3.8Z'/%3E%3Cpath fill='%23ea4335' d='M12 2c1.8 0 3.4.7 4.6 1.9l-6 5.9-3.3-5.9A6.6 6.6 0 0 1 12 2Z'/%3E%3Ccircle cx='12' cy='8.4' r='2.35' fill='white'/%3E%3C/svg%3E");
+      filter: drop-shadow(0 1px 1px rgba(8, 46, 34, .16));
+    }
+
     .map-link:hover,
+    .map-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: #4285f4;
+      color: #174ea6;
+      background: linear-gradient(180deg, #ffffff 0%, #dbe8ff 100%);
+      outline: 0;
+    }
+
     .action-link:hover,
-    .map-link:focus-visible,
     .action-link:focus-visible {
       transform: translateY(-1px);
       border-color: var(--lake);
@@ -1286,41 +1330,36 @@
               <div class="event">
                 <div class="time"><span class="kind">建議</span>10:30</div>
                 <div>
-                  <h3>三角市場</h3>
+                  <h3><a class="event-title-link" href="#spot-sankaku">三角市場</a></h3>
                   <p>先用海鮮丼補充體力，再開始小樽散步。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-sankaku">三角市場</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>11:40</div>
                 <div>
-                  <h3>小樽運河</h3>
+                  <h3><a class="event-title-link" href="#spot-otaru-canal">小樽運河</a></h3>
                   <p>沿運河散步拍照，天氣好時適合安排短暫咖啡休息。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-otaru-canal">小樽運河</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>12:30</div>
                 <div>
-                  <h3>小樽音樂盒堂、堺町通</h3>
+                  <h3><a class="event-title-link" href="#spot-musicbox">小樽音樂盒堂、堺町通</a></h3>
                   <p>主街區步行逛店，適合找小物、玻璃器皿與甜點。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-musicbox">小樽音樂盒堂</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>13:30</div>
                 <div>
-                  <h3>北一硝子</h3>
+                  <h3><a class="event-title-link" href="#spot-kitaichi">北一硝子</a></h3>
                   <p>玻璃工藝與小樽代表性購物點。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-kitaichi">北一硝子</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>14:30</div>
                 <div>
-                  <h3>北菓楼 小樽本館、六花亭</h3>
+                  <h3><a class="event-title-link" href="#spot-kitakaro-rikka">北菓楼 小樽本館、六花亭</a></h3>
                   <p>甜點伴手禮集中採買，北菓楼與六花亭排在同一區塊。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-kitakaro-rikka">北菓楼、六花亭</a></div>
                 </div>
               </div>
               <div class="event">
@@ -1454,49 +1493,43 @@
               <div class="event">
                 <div class="time"><span class="kind">上午</span>09:00</div>
                 <div>
-                  <h3>札幌朝市 - 成和水産</h3>
+                  <h3><a class="event-title-link" href="#spot-seiwa">札幌朝市 - 成和水産</a></h3>
                   <p>早上先吃市場海鮮或看店家採買狀況。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-seiwa">札幌朝市 - 成和水産</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">接續</span>10:00</div>
                 <div>
-                  <h3>北之漁場 / 北之寶</h3>
+                  <h3><a class="event-title-link" href="#spot-kitanoryoba">北之漁場 / 北之寶</a></h3>
                   <p>接在札幌朝市後安排，補海產、乾貨與北海道伴手禮。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-kitanoryoba">北之漁場 / 北之寶</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>11:30</div>
                 <div>
-                  <h3>北海道神宮</h3>
+                  <h3><a class="event-title-link" href="#spot-hokkaido-jingu">北海道神宮</a></h3>
                   <p>到圓山公園一帶散步、參拜，節奏放慢。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-hokkaido-jingu">北海道神宮</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">下午</span>14:30</div>
                 <div>
-                  <h3>大通公園</h3>
+                  <h3><a class="event-title-link" href="#spot-odori">大通公園</a></h3>
                   <p>札幌市中心綠地，適合休息、買飲料、拍札幌街景。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-odori">大通公園</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">逛街</span>16:00</div>
                 <div>
-                  <h3>狸小路商店街</h3>
+                  <h3><a class="event-title-link" href="#spot-tanukikoji">狸小路商店街</a></h3>
                   <p>藥妝、零食、伴手禮集中補貨。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-tanukikoji">狸小路</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">晚餐</span>18:30</div>
                 <div>
-                  <h3>晚餐建議 Suage+</h3>
+                  <h3><a class="event-title-link" href="#spot-suage">晚餐建議 Suage+</a></h3>
                   <p>湯咖哩是札幌代表美食之一，Suage+ 作為晚餐集合參考。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-suage">Suage+</a></div>
                 </div>
               </div>
             </div>
@@ -1635,41 +1668,36 @@
               <div class="event">
                 <div class="time"><span class="kind">主日</span>10:00</div>
                 <div>
-                  <h3>札幌に在る教会</h3>
+                  <h3><a class="event-title-link" href="#spot-sapporo-church">札幌に在る教会</a></h3>
                   <p>主日 10:00 開始，中午有愛宴。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-sapporo-church">札幌に在る教会</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">下午</span>13:40</div>
                 <div>
-                  <h3>白色戀人公園付費區</h3>
+                  <h3><a class="event-title-link" href="#spot-shiroi">白色戀人公園付費區</a></h3>
                   <p>付費區已確認 10 張成人票，使用方式見票券重點。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-shiroi">白色戀人公園</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">Highlight</span>15:20</div>
                 <div>
-                  <h3><span class="highlight">餅乾手作課程 15:20</span></h3>
+                  <h3><a class="event-title-link" href="#spot-shiroi"><span class="highlight">餅乾手作課程 15:20</span></a></h3>
                   <p>私の白い恋人手作りコース 4 名樣 × 2 張，共 8 人。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-shiroi">手作課程與使用方式</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">晚餐</span>17:30</div>
                 <div>
-                  <h3>迴轉壽司なごやか亭 発寒店</h3>
+                  <h3><a class="event-title-link" href="#spot-nagoyakatei">迴轉壽司なごやか亭 発寒店</a></h3>
                   <p>7/12 主選迴轉壽司。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-nagoyakatei">なごやか亭 発寒店</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">夜景</span>19:30</div>
                 <div>
-                  <h3>藻岩山纜車</h3>
+                  <h3><a class="event-title-link" href="#spot-moiwa">藻岩山纜車</a></h3>
                   <p>依天氣與體力決定上山時間，保留夜景彈性。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-moiwa">藻岩山纜車</a></div>
                 </div>
               </div>
             </div>
@@ -1785,9 +1813,8 @@
               <div class="event">
                 <div class="time"><span class="kind">購物</span>10:00</div>
                 <div>
-                  <h3>到札幌火車站買伴手禮</h3>
+                  <h3><a class="event-title-link" href="#spot-sapporo-station">到札幌火車站買伴手禮</a></h3>
                   <p>車站與百貨地下街適合最後補零食與限定商品。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-sapporo-station">札幌火車站伴手禮</a></div>
                 </div>
               </div>
               <div class="event">
@@ -1801,9 +1828,8 @@
               <div class="event">
                 <div class="time"><span class="kind">入住</span>15:00</div>
                 <div>
-                  <h3>洞爺湖乃之風 Resort 入住</h3>
+                  <h3><a class="event-title-link" href="#spot-nonokaze">洞爺湖乃之風 Resort 入住</a></h3>
                   <p>抵達後先辦入住、休息、看湖景與安排溫泉時間。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-nonokaze">洞爺湖乃之風</a></div>
                 </div>
               </div>
             </div>
@@ -1880,25 +1906,22 @@
               <div class="event">
                 <div class="time"><span class="kind">上午</span>10:00</div>
                 <div>
-                  <h3>SAIRO 展望台</h3>
+                  <h3><a class="event-title-link" href="#spot-sairo">SAIRO 展望台</a></h3>
                   <p>天氣好時先看洞爺湖全景與拍團體照。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-sairo">SAIRO 展望台</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">午前</span>11:30</div>
                 <div>
-                  <h3>Lake Hill Farm</h3>
+                  <h3><a class="event-title-link" href="#spot-lake-hill">Lake Hill Farm</a></h3>
                   <p>洞爺湖周邊美食與冰淇淋停靠點。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-lake-hill">Lake Hill Farm</a></div>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">下午</span>14:00</div>
                 <div>
-                  <h3>洞爺湖 / 乃之風周邊休息</h3>
+                  <h3><a class="event-title-link" href="#spot-toyako-rest">洞爺湖 / 乃之風周邊休息</a></h3>
                   <p>回到湖畔散步、休息、溫泉，讓旅程中段有恢復時間。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-toyako-rest">洞爺湖周邊</a></div>
                 </div>
               </div>
             </div>
@@ -1998,9 +2021,8 @@
               <div class="event">
                 <div class="time"><span class="kind">機場</span>13:00</div>
                 <div>
-                  <h3>新千歲機場午餐與最後購物</h3>
+                  <h3><a class="event-title-link" href="#spot-cts">新千歲機場午餐與最後購物</a></h3>
                   <p>依到達時間處理報到、午餐與伴手禮補貨。</p>
-                  <div class="event-links"><a class="event-chip" href="#spot-cts">新千歲機場</a></div>
                 </div>
               </div>
               <div class="event">
