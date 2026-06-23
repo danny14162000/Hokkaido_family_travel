@@ -900,6 +900,69 @@
       color: var(--muted);
     }
 
+    .charter-card {
+      grid-column: span 2;
+      display: grid;
+      gap: 16px;
+    }
+
+    .charter-common {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .charter-chip {
+      display: grid;
+      gap: 3px;
+      min-height: 70px;
+      padding: 12px;
+      border: 1px solid rgba(43,118,145,.16);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(219,239,245,.68), rgba(255,255,255,.88));
+    }
+
+    .charter-chip span,
+    .charter-leg .leg-date,
+    .charter-leg .leg-duration {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .charter-chip strong {
+      color: var(--pine-dark);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.18;
+    }
+
+    .charter-legs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .charter-leg {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .charter-leg .leg-route {
+      margin: 0;
+      color: var(--pine-dark);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.28;
+    }
+
+    .charter-leg .leg-time {
+      color: var(--ink);
+      font-weight: 950;
+    }
+
     .flight-board {
       display: grid;
       gap: 12px;
@@ -1061,6 +1124,10 @@
         grid-template-columns: 1fr;
       }
 
+      .charter-card {
+        grid-column: auto;
+      }
+
       .spot-card,
       .spot-card.wide {
         grid-column: auto;
@@ -1090,6 +1157,8 @@
       .notice-strip,
       .trip-stats,
       .info-grid,
+      .charter-common,
+      .charter-legs,
       .day-rail,
       .flight-row {
         grid-template-columns: 1fr;
@@ -2016,7 +2085,7 @@
               </div>
               <div class="event">
                 <div class="time"><span class="kind">包車</span>10:30</div>
-                <div><h3>洞爺湖乃之風 → 新千歲機場</h3><p>綠牌車，10 人，行李最多 16 件大型行李。</p></div>
+                <div><h3>洞爺湖乃之風 → 新千歲機場</h3><p>綠牌車，10 人，約 1 小時 45 分；行李最多 16 件大型行李。</p></div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">機場</span>13:00</div>
@@ -2070,13 +2139,27 @@
           <h3>住宿</h3>
           <p>7/10-7/13：札幌 CHALEUR / Airbnb。7/13-7/15：洞爺湖乃之風 Resort。</p>
         </div>
-        <div class="info-card">
-          <h3>包車</h3>
-          <p>7/13 札幌火車站 → 洞爺湖乃之風，13:00 出發，10 人，綠牌車，約 2 小時。</p>
-        </div>
-        <div class="info-card">
-          <h3>回程包車</h3>
-          <p>7/15 洞爺湖乃之風 → 新千歲機場，10:30 出發，10 人，綠牌車，行李最多 16 件大型行李。</p>
+        <div class="info-card charter-card">
+          <h3>包車資訊</h3>
+          <div class="charter-common" aria-label="包車共同資訊">
+            <div class="charter-chip"><span>人數</span><strong>10 人</strong></div>
+            <div class="charter-chip"><span>車輛</span><strong>綠牌車</strong></div>
+            <div class="charter-chip"><span>行李</span><strong>最多 16 件大型行李</strong></div>
+          </div>
+          <div class="charter-legs" aria-label="包車分段資訊">
+            <div class="charter-leg">
+              <span class="leg-date">7/13 第一段</span>
+              <p class="leg-route">札幌火車站 → 洞爺湖乃之風</p>
+              <span class="leg-time">13:00 出發</span>
+              <span class="leg-duration">約 2 小時</span>
+            </div>
+            <div class="charter-leg">
+              <span class="leg-date">7/15 第二段</span>
+              <p class="leg-route">洞爺湖乃之風 → 新千歲機場</p>
+              <span class="leg-time">10:30 出發</span>
+              <span class="leg-duration">約 1 小時 45 分</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
