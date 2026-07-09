@@ -1,5 +1,12 @@
 # Hokkaido Summer Family Field Guide
 
+## Origin and Design Principle
+
+- Source chat verified: Codex thread `按日期排序北海道行程` (`019ee91c-26cb-74e0-9751-767db533cb44`).
+- In that chat, the card-image system was explicitly requested to follow `garden-skills` principles: images should present the clear place/product focus, not merely show the entire uncropped photo.
+- Future visual updates should keep this Garden Skill principle as the baseline: design image, category badge, title, and guide text as one integrated travel card.
+- Later Open Design / `design-taste-frontend` work may be used for broader visual redesigns when explicitly requested, but it should preserve the original Garden-style card logic.
+
 ## Design Direction
 
 This redesign treats the travel guide as a premium family field guide for a summer Hokkaido trip: part travel magazine, part route notebook, part postcard set. The visual language should feel outdoorsy, warm, and organized rather than like a dashboard.
@@ -9,7 +16,7 @@ This redesign treats the travel guide as a premium family field guide for a summ
 - Palette: lavender purple `#8f79bd`, lake blue `#4aa7c7`, milk cream `#fff7e6`, corn yellow `#f2bf4a`, pine green `#1f5f48`, soft coral `#e77f6f`.
 - Background language: soft contour lines, route traces, field-grid texture, pale ticket paper, light postal marks. Patterns must stay low contrast for readability.
 - Typography: traditional Chinese readability first; serif display headings for magazine cover feeling, clean sans-serif body text for itinerary scanning.
-- Cards: postcard and field-note treatment with small category badges, soft paper shadows, stable image ratios, and travel-note spacing.
+- Cards: Garden-style postcard and field-note treatment: the image is the card's main visual cover, the crop should make the attraction/product recognizable, and category badges + text should feel designed together rather than pasted on separately.
 - Motifs: each day receives a small contextual marker:
   - 7/10 Otaru: canal, glass, seafood market.
   - 7/11 Sapporo: shrine walk, park, Tanukikoji street.

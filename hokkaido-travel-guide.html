@@ -994,16 +994,62 @@
     }
 
     .flight-leg {
+      position: relative;
+      overflow: hidden;
       padding: 12px;
       border: 1px dashed var(--line-strong);
       border-radius: var(--radius);
       background: var(--paper);
     }
 
+    .flight-leg.is-late {
+      padding: 16px 76px 16px 16px;
+      border: 1px solid rgba(45, 107, 79, .28);
+      background:
+        radial-gradient(circle at 88% 18%, rgba(197, 94, 82, .18), transparent 35%),
+        linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(245, 234, 210, .78)),
+        var(--paper);
+      box-shadow: 0 18px 38px rgba(45, 107, 79, .16);
+    }
+
+    .flight-leg.is-late::before {
+      content: "";
+      position: absolute;
+      inset: 14px 14px auto auto;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(45, 107, 79, .32);
+      border-radius: 50%;
+      background:
+        repeating-linear-gradient(135deg, rgba(45, 107, 79, .12) 0 2px, transparent 2px 6px),
+        rgba(255, 255, 255, .5);
+      opacity: .9;
+    }
+
+    .flight-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: var(--pine-dark);
+      background: var(--gold-soft);
+      border: 1px solid rgba(168, 121, 44, .28);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+
     .flight-leg .date {
       color: var(--muted);
       font-size: 12px;
       font-weight: 850;
+    }
+
+    .flight-leg.is-late .date {
+      color: var(--pine);
+      font-weight: 950;
     }
 
     .flight-leg strong {
@@ -1015,12 +1061,28 @@
       line-height: 1.2;
     }
 
+    .flight-leg.is-late strong {
+      color: var(--pine-dark);
+      font-size: 21px;
+    }
+
     .flight-leg span {
       display: block;
       margin-top: 5px;
       color: var(--muted);
       font-size: 13px;
     }
+
+    .flight-leg.is-late span {
+      color: var(--ink-2);
+      font-weight: 800;
+    }
+
+    .flight-leg.is-late > * {
+      position: relative;
+      z-index: 1;
+    }
+
 
     .ticket-panel {
       display: grid;
@@ -1230,6 +1292,16 @@
       .date-card .date {
         font-size: 34px;
       }
+
+      .flight-leg.is-late {
+        padding: 16px;
+      }
+
+      .flight-leg.is-late::before {
+        width: 38px;
+        height: 38px;
+        opacity: .42;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1309,7 +1381,7 @@
       <div>
         <p class="kicker">HOKKAIDO FIELD GUIDE</p>
         <h1>鄭氏家族北海道夏日之旅</h1>
-        <p class="hero-lede">主行程以旅遊行程內容為基準，已整合包車、航班分組、白色戀人票券、每日景點玩法、逛街重點與必買必吃。圖片已改用本機檔案，避免連結失效。</p>
+        <p class="hero-lede">主行程以旅遊行程內容為基準，已整合包車、航班資訊、白色戀人票券、每日景點玩法、逛街重點與必買必吃。圖片已改用本機檔案，避免連結失效。</p>
       </div>
       <div>
         <div class="trip-stats" aria-label="旅程摘要">
@@ -1391,7 +1463,7 @@
             <div class="schedule" aria-label="7月10日行程表">
               <div class="event">
                 <div class="time"><span class="kind">航班</span>07:35</div>
-                <div><h3>主行程抵達新千歲機場</h3><p>VZ570 台北桃園 02:50 起飛，07:35 抵達札幌千歲。</p></div>
+                <div><h3>抵達新千歲機場</h3><p>VZ570 台北桃園 02:50 起飛，07:35 抵達札幌千歲。</p></div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">建議</span>09:00</div>
@@ -1537,12 +1609,7 @@
             </div>
             <div class="route-card">
               <span class="label">ROUTE</span>
-              <strong>札幌朝市 → 北之漁場 → 北之寶 → 北海道神宮 → 大通公園 → 狸小路</strong>
-            </div>
-            <div class="rail-note">
-              <span class="label">大姨丈組</span>
-              <strong>13:00 TPE 起飛，17:55 抵達 CTS。</strong>
-              <p>時間較晚，抵達後直接前往 CHALEUR / Airbnb；返程同主要組。</p>
+              <strong>札幌朝市 → 北之寶 → 北之漁場 → 北海道神宮 → 大通公園 → 狸小路</strong>
             </div>
           </aside>
 
@@ -1570,15 +1637,15 @@
               <div class="event">
                 <div class="time"><span class="kind">接續</span>10:00</div>
                 <div>
-                  <h3><a class="event-title-link" href="#spot-kitanoryoba">北之漁場</a></h3>
-                  <p>分店功能不同，先確認要逛魚販、伴手禮店或海鮮餐廳。</p>
+                  <h3><a class="event-title-link" href="#spot-kitanotakara">北之寶</a></h3>
+                  <p>到札幌朝市丸果中心內看海鮮丼，依人潮決定是否用餐。</p>
                 </div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">接續</span>10:30</div>
                 <div>
-                  <h3><a class="event-title-link" href="#spot-kitanotakara">北之寶</a></h3>
-                  <p>到札幌朝市丸果中心內看海鮮丼，依人潮決定是否用餐。</p>
+                  <h3><a class="event-title-link" href="#spot-kitanoryoba">北之漁場</a></h3>
+                  <p>分店功能不同，先確認要逛魚販、伴手禮店或海鮮餐廳。</p>
                 </div>
               </div>
               <div class="event">
@@ -1629,21 +1696,6 @@
                   </div>
                 </section>
 
-                <section class="spot-card skip-target" id="spot-kitanoryoba">
-                  <div class="spot-photo"><img src="assets/notion-kitanoryoba.png" alt="北之漁場"></div>
-                  <div class="spot-copy">
-                    <div class="spot-meta"><span class="category food">魚販 / 食堂 / 伴手禮</span></div>
-                    <h4>北之漁場</h4>
-                    <p class="intro">札幌場外市場內有 1、2、3 號店：1 號店偏魚販、2 號店是海鮮餐廳、3 號店偏伴手禮，地圖評價也分開計算。</p>
-                    <ul class="guide-list">
-                      <li><b>玩法</b><span>先決定要買海產、吃早餐或找伴手禮，再按分店編號前往，避免排錯店。</span></li>
-                      <li><b>必吃</b><span>蟹類、海鮮丼與季節海產；購買前比較當日價格、份量與保存方式。</span></li>
-                      <li><b>提醒</b><span>各分店評論與用途不同，餐廳的份量和性價比意見較分散；冷藏、冷凍品要確認後續保冷與入境規定。</span></li>
-                    </ul>
-                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E3%81%AE%E6%BC%81%E5%A0%B4%20%E6%9C%AD%E5%B9%8C%E5%A0%B4%E5%A4%96%E5%B8%82%E5%A0%B4%E5%BA%97" target="_blank" rel="noreferrer">Google Maps</a></div>
-                  </div>
-                </section>
-
                 <section class="spot-card skip-target" id="spot-kitanotakara">
                   <div class="spot-photo"><img src="assets/notion-kitanotakara.png" alt="北之寶"></div>
                   <div class="spot-copy">
@@ -1656,6 +1708,21 @@
                       <li><b>提醒</b><span>Google Maps 上有兩間名稱相近的北之寶；本行程是北 12 條西 20 丁目、丸果中心內的店。</span></li>
                     </ul>
                     <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E3%81%AE%E5%AE%9D%20%E6%9C%AD%E5%B9%8C%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8C%9712%E6%9D%A1%E8%A5%BF20%E4%B8%81%E7%9B%AE1-20" target="_blank" rel="noreferrer">Google Maps</a></div>
+                  </div>
+                </section>
+
+                <section class="spot-card skip-target" id="spot-kitanoryoba">
+                  <div class="spot-photo"><img src="assets/notion-kitanoryoba.png" alt="北之漁場"></div>
+                  <div class="spot-copy">
+                    <div class="spot-meta"><span class="category food">魚販 / 食堂 / 伴手禮</span></div>
+                    <h4>北之漁場</h4>
+                    <p class="intro">札幌場外市場內有 1、2、3 號店：1 號店偏魚販、2 號店是海鮮餐廳、3 號店偏伴手禮，地圖評價也分開計算。</p>
+                    <ul class="guide-list">
+                      <li><b>玩法</b><span>先決定要買海產、吃早餐或找伴手禮，再按分店編號前往，避免排錯店。</span></li>
+                      <li><b>必吃</b><span>蟹類、海鮮丼與季節海產；購買前比較當日價格、份量與保存方式。</span></li>
+                      <li><b>提醒</b><span>各分店評論與用途不同，餐廳的份量和性價比意見較分散；冷藏、冷凍品要確認後續保冷與入境規定。</span></li>
+                    </ul>
+                    <div class="spot-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E3%81%AE%E6%BC%81%E5%A0%B4%20%E6%9C%AD%E5%B9%8C%E5%A0%B4%E5%A4%96%E5%B8%82%E5%A0%B4%E5%BA%97" target="_blank" rel="noreferrer">Google Maps</a></div>
                   </div>
                 </section>
 
@@ -2090,7 +2157,7 @@
             <div class="rail-note">
               <span class="label">包車</span>
               <strong>10:30 出發，10 人，綠牌車。</strong>
-              <p>行李最多 16 件大型行李。抵達機場後依主要組與哲哲組航班分流。</p>
+              <p>行李最多 16 件大型行李。抵達機場後依 CI131 與 JX851 回程班機分流。</p>
             </div>
           </aside>
 
@@ -2098,7 +2165,7 @@
             <div class="day-title">
               <div>
                 <h2>退房、包車到新千歲機場、返台</h2>
-                <p>最後一天以交通與機場購物為主，時間抓保守，主行程與大姨丈組同一班返程，哲哲組較晚離開。</p>
+                <p>最後一天以交通與機場購物為主，時間抓保守；回程除哲哲組較晚離開外，其餘搭 CI131 返台。</p>
               </div>
               <div class="tag-row">
                 <span class="tag lake">包車</span>
@@ -2125,7 +2192,7 @@
               </div>
               <div class="event">
                 <div class="time"><span class="kind">返程</span>15:05</div>
-                <div><h3>主要組 / 大姨丈組 CI131</h3><p>CTS 15:05 → TPE 18:15，中華航空。</p></div>
+                <div><h3>CI131 返台班機</h3><p>CTS 15:05 → TPE 18:15，中華航空。</p></div>
               </div>
               <div class="event">
                 <div class="time"><span class="kind">返程</span>16:25</div>
@@ -2200,25 +2267,25 @@
     <section id="flights" class="skip-target" aria-labelledby="flights-title">
       <div class="section-heading">
         <div>
-          <h2 id="flights-title">航班分組</h2>
-          <p>時間皆為當地時間。大姨丈組較晚抵達，抵達後直接前往 CHALEUR / Airbnb；哲哲組較晚離開。</p>
+          <h2 id="flights-title">航班資訊</h2>
+          <p>時間皆為當地時間。去程同班抵達；回程除哲哲組較晚離開外，其餘搭 CI131 返台。</p>
         </div>
       </div>
       <div class="flight-board">
         <div class="flight-row">
-          <div class="flight-group">主要組</div>
-          <div class="flight-leg"><div class="date">去程 2026/07/10</div><strong>VZ570｜02:50 TPE → 07:35 CTS</strong><span>泰國越南喬航空，直飛，3 小時 45 分鐘。</span></div>
-          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>CI131｜15:05 CTS → 18:15 TPE</strong><span>中華航空，直飛，4 小時 10 分鐘。</span></div>
+          <div class="flight-group">去程</div>
+          <div class="flight-leg"><div class="date">2026/07/10</div><strong>VZ570｜02:50 TPE → 07:35 CTS</strong><span>全員同班抵達新千歲機場。</span></div>
+          <div class="flight-leg"><div class="date">抵達後</div><strong>新千歲機場 → 小樽 → 札幌</strong><span>出關、取行李與買票後，一起接續小樽午餐與札幌入住行程。</span></div>
         </div>
         <div class="flight-row">
-          <div class="flight-group">大姨丈組</div>
-          <div class="flight-leg"><div class="date">去程 2026/07/11</div><strong>13:00 TPE → 17:55 CTS</strong><span>較晚抵達，抵達後直接前往 CHALEUR / Airbnb。</span></div>
-          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>CI131｜15:05 CTS → 18:15 TPE</strong><span>返程跟主要組相同。</span></div>
-        </div>
-        <div class="flight-row">
-          <div class="flight-group">哲哲組</div>
-          <div class="flight-leg"><div class="date">去程 2026/07/10</div><strong>VZ570｜02:50 TPE → 07:35 CTS</strong><span>去程跟主要組相同。</span></div>
-          <div class="flight-leg"><div class="date">回程 2026/07/15</div><strong>JX851｜16:25 CTS → 19:35 TPE</strong><span>星宇航空，較晚離開。</span></div>
+          <div class="flight-group">回程</div>
+          <div class="flight-leg"><div class="date">2026/07/15</div><strong>CI131｜15:05 CTS → 18:15 TPE</strong><span>其餘成員同班返台，中華航空直飛，4 小時 10 分鐘。</span></div>
+          <div class="flight-leg is-late">
+            <div class="flight-badge">哲哲組｜晚回程</div>
+            <div class="date">2026/07/15 · 星宇航空</div>
+            <strong>JX851｜16:25 CTS → 19:35 TPE</strong>
+            <span>比 CI131 晚 1 小時 20 分起飛。</span>
+          </div>
         </div>
       </div>
     </section>
