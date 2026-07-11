@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-07-11：GitHub Pages 發布完成
+
+- 已提交並推送 `ad09542`（`Update Hokkaido itinerary cards and schedules`）至 `main`。
+- `pages build and deployment` 已對應 `ad09542` 成功完成；公開頁以 cache-buster 驗證到 7/15 新時段、萬萬名組 Airport JR、なごやか亭與神宮茶屋卡片內容。
+
 ## 2026-07-11：7/15、7/18 行程時間重排
 
 - 7/15 改為 15:00–15:30 大通公園、15:30–18:00 狸小路、18:00 湯咖哩；夜間聖代與回 CHALEUR 時間連動提前為約 19:15、20:15。

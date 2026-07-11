@@ -1,5 +1,10 @@
 # Handoff
 
+## 2026-07-11：最新發布狀態
+
+- 網站內容已於 commit `ad09542` 推送至 `main`；GitHub Pages workflow 成功，公開頁已驗證。
+- 公開頁：`https://danny14162000.github.io/Hokkaido_family_travel/hokkaido-travel-guide.html`。
+
 ## 2026-07-11：7/15、7/18 時間已重排
 
 - 7/15：15:00 大通公園、15:30 狸小路、18:00 湯咖哩；Parfaiteria PaL 改約 19:15、回 CHALEUR 改約 20:15。
